@@ -1,37 +1,15 @@
-#String to Integer
-#https://leetcode.com/explore/featured/card/top-interview-questions-easy/127/strings/884/
+#Implement strStr
+#https://leetcode.com/explore/featured/card/top-interview-questions-easy/127/strings/885/
 
 class Solution:
-    def myAtoi(self, stri: str) -> int:
-        res = 0
-        i = 0
-        sign = 1
-        l = len(stri)
-        while i<l and stri[i] == ' ':
-            i += 1
-            
-        if i >= l:
+    def strStr(self, haystack: str, needle: str) -> int:
+        h = len(haystack)
+        n = len(needle)
+        if n == 0:
             return 0
         
-        if stri[i] == '-':
-            sign = -1
-            i += 1
-        elif stri[i] == '+':
-            i += 1
-            
-        if i >= l:
-            return 0
-        
-        nums = '0123456789'
-        while i<l and stri[i] in nums:
-            res = res * 10 + nums.find(stri[i])
-            i += 1
-            
-        res *= sign
-        INT_MIN = - (2 ** 31)
-        INT_MAX = 2 ** 31 -1
-        if res < INT_MIN:
-            return INT_MIN
-        if res > INT_MAX:
-            return INT_MAX
-        return res
+        for i in range(h - n + 1):
+
+            if needle == haystack[i:i+n]:
+                return i
+        return -1
