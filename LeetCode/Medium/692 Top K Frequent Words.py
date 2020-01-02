@@ -1,6 +1,23 @@
 #692 Top K Frequent Words
 #https://leetcode.com/problems/top-k-frequent-words/
 
+#Using collections
+class Solution(object):
+    def topKFrequent(self, words, k):
+        count = collections.Counter(words)
+        candidates = count.keys()
+        candidates.sort(key = lambda w: (-count[w], w))
+        return candidates[:k]
+    
+#Using heapq
+class Solution(object):
+    def topKFrequent(self, words, k):
+        count = collections.Counter(words)
+        heap = [(-freq, word) for word, freq in count.items()]
+        heapq.heapify(heap)
+        return [heapq.heappop(heap)[1] for _ in xrange(k)]
+
+# my solution    
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         # calcuate frequency of words
