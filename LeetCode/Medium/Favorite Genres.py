@@ -24,11 +24,18 @@ def favGenres(userSongs, songGenres):
     userGenres = {}
     
     for user in userSongs:
-        genres = {}
+        genres_count = {}
+        max = 0
         for song in userSongs[user]:
             genre = genreSong[song]
-            genres[genre] = True
-        userGenres[user] = list(genres.keys())
+            if genre in genres_count:
+                genres_count[genre] += 1
+            else:
+                genres_count[genre] = 1
+            if genres_count[genre] > max:
+                max = genres_count[genre]
+        userGenres[user] = [gen for gen,count in genres_count.items() if count == max]
+        
             
     return userGenres
 
