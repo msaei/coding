@@ -1,6 +1,7 @@
 #Shuffle an Array
 #https://leetcode.com/explore/featured/card/top-interview-questions-easy/98/design/670/
 
+
 class Solution:
     def __init__(self, nums):
         self.array = nums
