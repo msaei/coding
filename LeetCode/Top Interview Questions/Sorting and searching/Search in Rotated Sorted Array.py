@@ -1,6 +1,26 @@
 #Search in Rotated Sorted Array
 #https://leetcode.com/explore/interview/card/top-interview-questions-medium/110/sorting-and-searching/804
-
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if not nums:return -1
+        a,b=0,len(nums)-1
+        while a<b:
+            mid=a+(b-a)//2
+            if nums[mid]<nums[b]:
+                b=mid
+            else:a=mid+1
+        pi=a
+        #print(pi)
+        a,b=0,len(nums)-1
+        while a<=b:
+            mid=(a+b)//2
+            rem=(mid+pi)%len(nums)
+            if nums[rem]==target:return rem
+            elif nums[rem]>target:
+                b=mid-1
+            else:a=mid+1
+        return -1
+    
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         if len(nums) == 0:
