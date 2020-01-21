@@ -24,7 +24,7 @@ def transform(nums):
         else:
             res[pr] = nums[p1]
             pr += 1
-            p1 += 1
+            p1 = p2
             p2 += 1
     return res
 
@@ -49,13 +49,14 @@ def showBoard(board):
     for row in board:
         print(*row)
         
+while True:
+    
+    grid = []
+    for _ in range(4):
+        grid.append(list(map(int, input().split())))
+    dir = input()
 
-grid = []
-for _ in range(4):
-    grid.append(list(map(int, input().split())))
-dir = input()
-
-newGrid = move(grid, dir)
-showBoard(newGrid)
+    newGrid = move(grid, dir)
+    showBoard(newGrid)
 
 
